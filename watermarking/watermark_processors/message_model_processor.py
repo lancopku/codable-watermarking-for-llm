@@ -268,7 +268,7 @@ class WmProcessorMessageModel(WmProcessorBase):
             else:
                 nums = (all_log_Ps[i:i + self.encode_len] > 0).sum(0)
                 decoded_probs = torch.softmax(nums.float(), dim=-1)
-                decoded_message, decoded_prob = decoded_probs.max(0)
+                decoded_prob, decoded_message, = decoded_probs.max(0)
                 decoded_message = int(decoded_message)
                 decoded_messages.append(decoded_message)
                 decoded_prob = float(decoded_prob)
